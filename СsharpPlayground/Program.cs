@@ -25,15 +25,15 @@ namespace СsharpPlayground
             return l.x != r.x || l.y != r.y;
         }
         //Необязательные методы (не влияют на остальной код)
-        //public override bool Equals(object obj)
-        //{
-        //    return (obj is @class) && (((@struct)obj) == this);
-        //}
+        public override bool Equals(object obj)
+        {
+            return (obj is @class) && (((@struct)obj) == this);
+        }
 
-        //public override int GetHashCode()
-        //{
-        //    return base.GetHashCode();
-        //}
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
     class @class
     {
@@ -79,6 +79,8 @@ namespace СsharpPlayground
             Console.WriteLine("s2 == s1 {0}", s2 == s);
             s1.x = 4;
             Console.WriteLine("s = {0}", s);
+            object obj = s1;
+            Console.WriteLine("obj = {0}", obj);
 
             @class c = new @class();
             c.x = 1;
@@ -91,7 +93,11 @@ namespace СsharpPlayground
             Console.WriteLine("c2 == c1 {0}", c2 == c);
             c1.x = 4;
             Console.WriteLine("c = {0}", c);
+            obj = c1;
+            Console.WriteLine("obj = {0}", obj);
 
+            obj = "asdf";
+            obj = 123.456;
             Console.ReadKey();
         }
     }
